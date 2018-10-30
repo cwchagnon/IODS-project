@@ -2,3 +2,7 @@
 # About the project
 
 *Write a short description about the course and add a link to your github repository here. This is an R markdown (.Rmd) file so you can use R markdown syntax. See the 'Useful links' page in the mooc area (chapter 1) for instructions.*
+
+*This is Intro to Open Data Science. It would seem to teach us about using R and opensource datasets. It's alright, thus far, though there's plenty I'm still unclear on.*
+
+*my Github repository is at github.com/cwchagnon*
