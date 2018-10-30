@@ -5,4 +5,4 @@
 
 *This is Intro to Open Data Science. It would seem to teach us about using R and opensource datasets. It's alright, thus far, though there's plenty I'm still unclear on.*
 
-*my Github repository is at github.com/cwchagnon*
+*my Github repository is at https://github.com/cwchagnon/IODS-project*
