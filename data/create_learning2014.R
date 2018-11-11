@@ -17,6 +17,7 @@ deep_columns <- select(lrn14, one_of(deep_questions))
 surface_columns <- select(lrn14, one_of(surface_questions))
 strategic_columns <- select(lrn14, one_of(strategic_questions))
 
+lrn14$"attitude" <- lrn14$Attitude / 10
 lrn14$deep <- rowMeans(deep_columns)
 lrn14$surf <- rowMeans(surface_columns)
 lrn14$stra <- rowMeans(strategic_columns)
@@ -32,3 +33,4 @@ str(learning2014)
 write.csv(learning2014, file = "learning2014.csv")
 
 read.csv("learning2014.csv")
+

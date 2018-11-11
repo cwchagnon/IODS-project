@@ -1,7 +1,49 @@
-# Insert chapter 2 title here
+# Chapter 2: Working on the Intro to Social Statistics 2014 Dataset
 
 *Describe the work you have done this week and summarize your learning.*
 
-- Describe your work and results clearly. 
-- Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods
-- Assume the reader has no previous knowledge of your data or the more advanced methods you are using  
+*This week we learned about a variety of methods on how to use R, including how to read data from the web; scaling variables; combining variables; selecting/modifying/creating columns; visualizations; simple and multiple regressions; and making predictions. The data we have been working with comes from a 2014 survey of students in the Introduction to Social Statistics course. The survey used a likert scale to gague student responses to 57 questions, as well as their age, gender, and exam points. The questions corresponded to different areas of learning: deep learning approach (maximizing learning), surface learning approach (memorizing without understanding), strategic learning approach (organizing studying in order to maximize chance of getting the highest possible grade). Please note that students who did not attend the exam were excluded from the dataset.*
+
+```{r}
+library(ggplot2)
+library(GGally)
+
+graphical_overview <- ggpairs(learning2014, mapping = aes(), lower = list(combo = wrap("facethist", bins = 20)))
+
+graphical_overview
+
+```
+
+*The graphical overview shows strongest correlation between points scored on the test with attitude. This fits in with pedagological theory, as ones attitude is often an indicator of their intrinsic desire to learn a subject, and the intrinsic desire to learn usually impacts how much one learns, which, in turn, impacts test scores. There is also a somewhat significant correlation to strategic learning and points, as well as surface learning and points. Interestingly, there would seem to be a correlation between age and strategic learning, which does play out to points, though the correlation with points and age is somewhat watered down. I hypothesize that the explanatory variables are attitude, surface learning, and strategic learning, and will create a regression model.*
+
+```{r}
+str(learning2014)
+library(GGally)
+library(ggplot2)
+
+regression_model <- lm(Points ~ Attitude + stra + surf, data = learning2014)
+
+regression_model
+
+regression_model2 <- lm(Points ~ stra + surf, data = learning2014)
+
+regression_model2
+
+p1 <- qplot(x = stra, y = Points, data = learning2014)
+p2 <- p1 + geom_point()
+p3 <- p2 + geom_smooth(method = "lm")
+p3
+
+p4 <- qplot(x = surf, y = Points, data = learning2014)
+p5 <- p4 + geom_point()
+p6 <- p5 + geom_smooth(method = "lm")
+p6
+
+regression_model3 <- lm(Points ~ stra + surf, data = learning2014)
+plot(regression_model3, which = c(1, 2, 5), par(mfrow = c(2,2)))
+```
+
+*I dropped attitude as it ended up having the lowest correlation of the group and (surprisingly) was not statistically significant. However strategic learning approach was very closely associated with doing better on the test, which should not be surprising as the entire approach is geared toward maximizing grades. Surface learning has a strong correlation with not doing well on the exam, which also makes sense as the students are not really engaging at a meaningful level with the material.*
+
+*Looking at the regression lines, it doesn't seem like the correlation to the multiple r-squared is that strong. However, at least the assumptions behind the model - that errors are normally distributed, are not correlated, and have constant variance - seem to stand up.*
+
