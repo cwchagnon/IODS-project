@@ -15,11 +15,15 @@ Author: "Christopher Chagnon"
 ***
   
 ```{r child = "chapter1.Rmd"}
+
+#This is incredibly frustrating. I don't know why my first chapter did not upload. I don't know if my second chapter will upload. I don't know why random errors pop up when I use the EXACT SAME CODE that works on the class page.
 ```
   
 ***
   
 ```{r child = "chapter2.Rmd"}
+#So, again, no clue if this will actually work. I feel like I'm learning, but also I feel like as soon as it seems I'm getting a handle on things, it all falls apart. Just really hoping this homework uploads correctly.
+
 ```
 
 ***
