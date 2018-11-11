@@ -1,3 +1,7 @@
+---
+output: github_document
+---
+
 # Chapter 2: Working on the Intro to Social Statistics 2014 Dataset
 
 *Describe the work you have done this week and summarize your learning.*
